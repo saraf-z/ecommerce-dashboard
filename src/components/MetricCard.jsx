@@ -2,23 +2,28 @@ import React from 'react';
 
 const MetricCard = ({ title, value, icon: Icon, change, isIncrease }) => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
-      <div>
-        <p className="text-sm font-medium text-gray-500">{title}</p>
-        <h3 className="text-2xl font-bold text-gray-900 mt-1">{value}</h3>
+   <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium text-slate-500">{title}</span>
+        {Icon && (
+          <div className="p-2 bg-slate-100 rounded-lg text-slate-600">
+            <Icon className="w-5 h-5" />
+          </div>
+        )}
+      </div>
+      <div className="mt-4">
+        <h3 className="text-2xl font-bold text-slate-900">{value}</h3>
         {change && (
-          <p className={`text-xs font-semibold mt-2 ${isIncrease ? 'text-green-600' : 'text-red-600'}`}>
-            {isIncrease ? '↑' : '↓'} {change} vs mes anterior
+          <p className={`text-xs font-semibold mt-2 flex items-center gap-1 ${
+            isIncrease ? 'text-emerald-600' : 'text-rose-600'
+          }`}>
+            <span>{isIncrease ? '↑' : '↓'}</span>
+            <span>{change} vs mes anterior</span>
           </p>
         )}
       </div>
-      {Icon && (
-        <div className="p-3 bg-indigo-50 rounded-lg text-indigo-600">
-          <Icon className="w-6 h-6" />
-        </div>
-      )}
     </div>
   );
-};
+}
 
 export default MetricCard;
